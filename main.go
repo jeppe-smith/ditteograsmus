@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"io"
 	"io/ioutil"
@@ -87,4 +88,5 @@ func main() {
 	http.Handle("/public/", http.StripPrefix("/public/", public))
 
 	log.Fatal(http.ListenAndServe(":1337", nil))
+	fmt.Print("server running")
 }
