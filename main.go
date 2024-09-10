@@ -17,7 +17,7 @@ func main() {
 			return
 		}
 
-		files, err := ioutil.ReadDir("public")
+		files, err := ioutil.ReadDir("uploads")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -58,7 +58,7 @@ func main() {
 			}
 			defer file.Close()
 
-			tempFile, err := ioutil.TempFile("public", "*.webp")
+			tempFile, err := ioutil.TempFile("uploads", "*.webp")
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
@@ -82,7 +82,9 @@ func main() {
 		}
 	})
 
+	uploads := http.FileServer(http.Dir("./uploads"))
 	public := http.FileServer(http.Dir("./public"))
+	http.Handle("/uploads/", http.StripPrefix("/uploads/", uploads))
 	http.Handle("/public/", http.StripPrefix("/public/", public))
 
 	log.Fatal(http.ListenAndServe(":1337", nil))
