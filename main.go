@@ -7,9 +7,17 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 )
 
 func main() {
+	uploadsPath := filepath.Join(".", "uploads")
+	err := os.MkdirAll(uploadsPath, os.ModeDir)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		tmpl, err := template.ParseFiles("index.html")
 		if err != nil {
