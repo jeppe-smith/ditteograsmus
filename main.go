@@ -86,7 +86,7 @@ func main() {
 				return
 			}
 
-			http.Redirect(w, r, "http://localhost:1337", http.StatusFound)
+			http.Redirect(w, r, "/", http.StatusFound)
 		}
 	})
 
