@@ -20,12 +20,30 @@ border-radius: 24px;
 overflow: hidden;
 box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
 }
+@media only screen and (min-width: 800px) {
+div {
+column-count: 2;
+column-gap: 20px;
+}
+}
+@media only screen and (min-width: 1000px) {
+div {
+column-count: 3;
+column-gap: 20px;
+}
+}
+@media only screen and (min-width: 1200px) {
+div {
+column-count: 4;
+column-gap: 20px;
+}
+}
 </style>
 <body>
+<div>
 {{range $path := .}}
-<section>
 <img src="/uploads/{{$path}}" loading="lazy"  />
-</section>
 {{end}}
+</div>
 </body>
 </html>
