@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   app:
     build:
@@ -6,8 +8,6 @@ services:
     ports:
       - "1337:1337"
     volumes:
-      # - type: bind
-      #   source: /data/ditteograsmus
-      #   target: /app/uploads
-      #   is_directory: true
-      - /data/test:/app/uploads
+      - uploads:/app/uploads
+volumes:
+  uploads:
