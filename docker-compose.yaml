@@ -9,7 +9,3 @@ services:
       - "1337:1337"
     volumes:
       - /tmp/ditteograsmus:/app/uploads  # Bind mount to host directory
-    restart: always
-
-volumes:
-  uploads:
