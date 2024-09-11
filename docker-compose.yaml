@@ -8,5 +8,5 @@ services:
     volumes:
       - type: bind
         source: /data/ditteograsmus
-        target: /app/ditteograsmus
+        target: /app/uploads
         is_directory: true
