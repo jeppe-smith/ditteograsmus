@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build:
@@ -9,6 +7,6 @@ services:
       - "1337:1337"
     volumes:
       - type: bind
-        source: ./uploads
-        target: /data/ditteograsmus
+        source: /data/ditteograsmus
+        target: /app/ditteograsmus
         is_directory: true
