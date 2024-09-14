@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
 )
 
 func main() {
@@ -30,6 +31,10 @@ func main() {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+
+		sort.Slice(files, func(a, b int) bool {
+			return files[a].ModTime().After(files[b].ModTime())
+		})
 
 		paths := []string{}
 
